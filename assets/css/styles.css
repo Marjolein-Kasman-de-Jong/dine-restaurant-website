@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "League Spartan";
+    src: url("/assets/fonts/LeagueSpartan-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* CSS Reset */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Colors */
+
+:root {
+    --colors-neutral-950: #000;
+    --colors-neutral-900: #111;
+    --colors-neutral-700: #444;
+    --colors-neutral-600: #4C4C4C;
+    --colors-neutral-400: #8E8E8E;
+    --colors-neutral-100: #EDEDED;
+    --colors-neutral-0: #FFF;
+
+    --colors-slate-800: #242B37;
+    --colors-slate-500: #5C6779;
+
+    --colors-red-500: #B54949;
+    --colors-stone-500: #9E7F66;
+}
+
+/* Utilities */
+
+/* Typography */
+
+body {
+    font-family: "League Spartan", sans-serif;
+}
+
+/* Page styles */
+
+.page-home {
+
+}
+
+.page-booking {
+
+}
+
+/* Main styles */
+
+main {
+
+}
+
+/* Footer styles */
+
+.page-footer {
+
+}
+
+/* Section styles */
+
+.hero {
+
+}
+
+.usps {
+
+}
+
+.menu-highlights {
+
+}
+
+.events {
+
+}
+
+.bookings-link {
+
+}
+
+.bookings {
+    
+}
