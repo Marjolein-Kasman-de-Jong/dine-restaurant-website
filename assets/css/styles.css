@@ -70,50 +70,219 @@ body {
     font-family: "League Spartan", sans-serif;
 }
 
+.heading-1 {
+    font-family: "League Spartan";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 125%;
+    letter-spacing: -0.025rem;
+
+    @media screen and (min-width: 768px) {
+        font-size: 3rem;
+        line-height: 133%;
+        letter-spacing: -0.0375rem;
+
+        @media screen and (min-width: 1024px) {
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 100%;
+            letter-spacing: -0.0625rem;
+        }
+    }
+}
+
+.paragraph-regular {
+    font-family: "League Spartan";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 162.5%;
+
+    @media screen and (min-width: 768px) {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
+}
+
+.btn-book-a-table {
+    font-family: "League Spartan";
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 95%;
+    letter-spacing: 0.15625rem;
+}
+
 /* Page styles */
 
-.page-home {
+.page-home {}
 
-}
-
-.page-booking {
-
-}
+.page-booking {}
 
 /* Main styles */
 
 main {
-
+    width: 100%;
 }
 
 /* Footer styles */
 
 .page-footer {
-
+    .section-content-wrapper {}
 }
 
 /* Section styles */
 
-.hero {
+/* -- All sections styles */
 
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .section-content-wrapper {
+        width: 87.2%;
+
+        @media screen and (min-width: 768px) {
+            width: 74.74%;
+
+            @media screen and (min-width: 1024px) {
+                width: 77.08%;
+            }
+        }
+    }
+}
+
+/* -- Single sections styles */
+
+.hero {
+    height: 748px;
+
+    background-image: image-set(url("../images/homepage/hero-bg-mobile.jpg") 1x,
+            url("../images/homepage/hero-bg-mobile@2x.jpg") 2x);
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media screen and (min-width: 768px) {
+        height: 992px;
+
+        background-image: image-set(url("../images/homepage/hero-bg-tablet.jpg") 1x,
+                url("../images/homepage/hero-bg-tablet@2x.jpg") 2x);
+
+        @media screen and (min-width: 1024px) {
+            height: 820px;
+
+            background-image: image-set(url("../images/homepage/hero-bg-desktop.jpg") 1x,
+                    url("../images/homepage/hero-bg-desktop@2x.jpg") 2x);
+        }
+    }
+
+    .section-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 232px;
+        color: var(--colors-neutral-0);
+        text-align: center;
+
+        @media screen and (min-width: 768px) {
+            width: 89.71%;
+            margin-top: 374px;
+
+            @media screen and (min-width: 1024px) {
+                align-items: flex-start;
+                margin-top: 65px;
+                text-align: left;
+
+                &>* {
+                    max-width: 508px;
+                }
+            }
+        }
+
+        .hero-heading {
+            margin-top: 40px;
+
+            @media screen and (min-width: 1024px) {
+                margin-top: 153px;
+            }
+        }
+
+        .hero-paragraph {
+            margin-top: 20px;
+            text-wrap: balance;
+
+            @media screen and (min-width: 1024px) {
+                margin-top: 10px;
+            }
+        }
+
+        .btn-book-a-table {
+            margin-top: 48px;
+
+            @media screen and (min-width: 768px) {
+                margin-top: 56px;
+
+                @media screen and (min-width: 1024px) {
+                    margin-top: 40px;
+                }
+            }
+        }
+    }
 }
 
 .usps {
-
+    .section-content-wrapper {}
 }
 
 .menu-highlights {
-
+    .section-content-wrapper {}
 }
 
 .events {
-
+    .section-content-wrapper {}
 }
 
 .bookings-link {
-
+    .section-content-wrapper {}
 }
 
 .bookings {
-    
+    .section-content-wrapper {}
+}
+
+/* Element styles */
+
+/* -- Button styles */
+
+.btn-book-a-table {
+    width: 248px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color .3s ease-in, background-color .3s ease-in;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    &.btn-transparent {
+        border: 1px solid var(--colors-neutral-0);
+        color: var(--colors-neutral-0);
+
+        @media(hover: hover) {
+            &:hover {
+                color: var(--colors-neutral-900);
+                background-color: var(--colors-neutral-0);
+            }
+        }
+    }
 }
