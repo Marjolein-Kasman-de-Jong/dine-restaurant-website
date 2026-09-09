@@ -149,6 +149,7 @@ section {
 
             @media screen and (min-width: 1024px) {
                 width: 77.08%;
+                max-width: 1110px;
             }
         }
     }
@@ -157,7 +158,7 @@ section {
 /* -- Single sections styles */
 
 .hero {
-    height: 748px;
+    min-height: 748px;
 
     background-image: image-set(url("../images/homepage/hero-bg-mobile.jpg") 1x,
             url("../images/homepage/hero-bg-mobile@2x.jpg") 2x);
@@ -167,13 +168,13 @@ section {
     background-repeat: no-repeat;
 
     @media screen and (min-width: 768px) {
-        height: 992px;
+        min-height: 992px;
 
         background-image: image-set(url("../images/homepage/hero-bg-tablet.jpg") 1x,
                 url("../images/homepage/hero-bg-tablet@2x.jpg") 2x);
 
         @media screen and (min-width: 1024px) {
-            height: 820px;
+            min-height: 820px;
 
             background-image: image-set(url("../images/homepage/hero-bg-desktop.jpg") 1x,
                     url("../images/homepage/hero-bg-desktop@2x.jpg") 2x);
@@ -184,17 +185,17 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 232px;
+        padding-top: 232px;
         color: var(--colors-neutral-0);
         text-align: center;
 
         @media screen and (min-width: 768px) {
             width: 89.71%;
-            margin-top: 374px;
+            padding-top: 374px;
 
             @media screen and (min-width: 1024px) {
                 align-items: flex-start;
-                margin-top: 65px;
+                padding-top: 65px;
                 text-align: left;
 
                 &>* {
@@ -283,6 +284,10 @@ section {
                 color: var(--colors-neutral-900);
                 background-color: var(--colors-neutral-0);
             }
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--colors-neutral-0);
         }
     }
 }
