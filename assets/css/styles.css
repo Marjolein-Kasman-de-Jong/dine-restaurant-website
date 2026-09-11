@@ -83,6 +83,11 @@ video {
     &.is-visible {
         opacity: 1;
     }
+
+    &.prefers-reduced-motion {
+        opacity: 1;
+        transition: none;
+    }
 }
 
 /* Typography */

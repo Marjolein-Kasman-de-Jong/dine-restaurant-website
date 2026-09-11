@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    // Animate title
-    const titles = document.querySelectorAll(".animated-title");
+    // Detect prefers-reduced-motion
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Intersection observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -15,10 +16,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     );
 
-    titles.forEach((title) => {
-        observer.observe(title);
-    });
+    // Animate titles
+    const titles = document.querySelectorAll(".animated-title");
+
+    if (!reduceMotion) {
+        titles.forEach((title) => {
+            observer.observe(title);
+        });
+    } else {
+        titles.forEach((title) => {
+            title.classList.add('prefers-reduced-motion');
+        });
+    }
 });
-
-
-
