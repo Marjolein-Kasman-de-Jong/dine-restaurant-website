@@ -76,6 +76,15 @@ video {
     border: 0;
 }
 
+.animated-title {
+    opacity: 0;
+    transition: opacity .6s ease-in-out;
+
+    &.is-visible {
+        opacity: 1;
+    }
+}
+
 /* Typography */
 
 body {
@@ -177,7 +186,7 @@ section {
             width: 74.74%;
 
             @media screen and (min-width: 1024px) {
-                width: auto;
+                width: calc(100% - 40px);
                 max-width: 1110px;
             }
         }
