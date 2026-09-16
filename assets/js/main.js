@@ -1,8 +1,13 @@
-document.addEventListener("DOMContentLoaded", (event) => {
-    // Detect prefers-reduced-motion
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.addEventListener("DOMContentLoaded", () => {
+    const animatedTitles = document.querySelectorAll(".animated-title");
 
-    // Intersection observer
+    const eventImages = [...document.querySelectorAll(".events-image")];
+    const eventButtons = [...document.querySelectorAll(".btn-event")];
+    const eventPanels = [...document.querySelectorAll(".event-panel")];
+
+    const eventElementGroups = [eventImages, eventButtons, eventPanels];
+
+    // Animate titles
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -16,16 +21,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     );
 
-    // Animate titles
-    const titles = document.querySelectorAll(".animated-title");
+    animatedTitles.forEach((title) => {
+        observer.observe(title);
+    });
 
-    if (!reduceMotion) {
-        titles.forEach((title) => {
-            observer.observe(title);
+    // Switch the active event image, button, and panel when an event button is clicked
+    eventButtons.forEach(eventButton => {
+        eventButton.addEventListener("click", function (e) {
+            const clickedButton = e.target.dataset.event;
+
+            eventElementGroups.forEach(eventElementGroup => {
+                eventElementGroup.forEach(eventElement => {
+                    eventElement.classList.remove("active");
+                });
+
+                const newActiveEventElement = eventElementGroup.find(eventElement => {
+                    return eventElement.dataset.event === clickedButton;
+                });
+                newActiveEventElement.classList.add("active");
+            });
         });
-    } else {
-        titles.forEach((title) => {
-            title.classList.add('prefers-reduced-motion');
-        });
-    }
+    });
 });
