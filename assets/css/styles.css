@@ -664,10 +664,10 @@ section {
                         margin-bottom: 30px;
                         text-align: center;
                     }
+                }
 
-                    .btn-book-a-table {
-                        margin: 0 auto;
-                    }
+                .btn-book-a-table {
+                    margin: 0 auto;
                 }
             }
 
