@@ -629,6 +629,10 @@ section {
             height: 320px;
             background-image: url("/assets/images/patterns/pattern-curve-top-right.svg");
             background-repeat: no-repeat;
+
+            @media screen and (min-width: 1024px) {
+                right: 62.15%;
+            }
         }
     }
 
@@ -637,12 +641,23 @@ section {
 
         @media screen and (min-width: 768px) {
             padding: 120px 0 121px 0;
+
+            @media screen and (min-width: 1024px) {
+                padding: 160px 0;
+                display: flex;
+                justify-content: center;
+                gap: 120px; 
+            }
         }
 
         .events-images-container {
             position: relative;
             display: grid;
             justify-content: center;
+
+            @media screen and (min-width: 1024px) {
+                width: 48.65%;
+            }
 
             &::before {
                 @media screen and (min-width: 768px) {
@@ -655,6 +670,10 @@ section {
                     height: 76px;
                     background-image: url("/assets/images/patterns/pattern-lines.svg");
                     background-repeat: no-repeat;
+
+                    @media screen and (min-width: 1024px) {
+                        left: -40px;
+                    }
                 }
             }
 
@@ -675,11 +694,21 @@ section {
             display: flex;
             flex-direction: column-reverse;
 
+            @media screen and (min-width: 1024px) {
+                width: 40.09%;
+                flex-direction: column;
+                justify-content: center;
+            }
+
             .events-descriptions-container {
                 display: grid;
                 
                 @media screen and (min-width: 768px) {
                     justify-items: center;
+
+                    @media screen and (min-width: 1024px) {
+                        justify-items: unset;
+                    }
                 }
 
                 .event-panel {
@@ -691,6 +720,10 @@ section {
 
                     @media screen and (min-width: 768px) {
                         width: 79.62%;
+
+                        @media screen and (min-width: 1024px) {
+                            width: unset;
+                        }
                     }
 
                     &.active {
@@ -705,6 +738,10 @@ section {
 
                         @media screen and (min-width: 768px) {
                             margin-bottom: 20px;
+
+                            @media screen and (min-width: 1024px) {
+                                text-align: left;
+                            }
                         }
                     }
 
@@ -714,24 +751,43 @@ section {
 
                         @media screen and (min-width: 768px) {
                             margin-bottom: 56px;
+
+                            @media screen and (min-width: 1024px) {
+                                margin-bottom: 26px;
+                                text-align: left;
+                            }
                         }
                     }
                 }
 
                 .btn-book-a-table {
                     margin: 0 auto;
+
+                    @media screen and (min-width: 1024px) {
+                        margin: 0;
+                    }
                 }
             }
 
             .events-list {
-                margin: 0 -58px;
                 padding: 37px 0 28px 0;
                 list-style-type: none;
 
                 @media screen and (min-width: 768px) {
+                    margin: 0 -58px;
                     padding: 57px 0 48px 0;
                     display: flex;
+                    justify-content: center;
                     gap: 10px;
+
+                    @media screen and (min-width: 1024px) {
+                        margin: unset;
+                        padding: 80px 0 0 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: unset;
+                        gap: 24px;
+                    }
                 }
 
                 li {
@@ -743,9 +799,14 @@ section {
                         width: 223px;
                         min-height: 37px;
                         align-items: flex-start;
+
+                        @media screen and (min-width: 1024px) {
+                            min-height: 16px;
+                        }
                     }
 
                     .btn-event {
+                        position: relative;
                         width: 100%;
                         border: none;
                         background-color: transparent;
@@ -758,6 +819,10 @@ section {
                             height: 100%;
                             display: flex;
                             justify-content: center;
+
+                            @media screen and (min-width: 1024px) {
+                                justify-content: flex-start;
+                            }
                         }
 
                         &:after {
@@ -770,6 +835,14 @@ section {
                             height: 1px;
                             background-color: var(--colors-stone-500);
                             transition: width .3s ease-in-out;
+
+                            @media screen and (min-width: 1024px) {
+                                bottom: unset;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                left: -127px;
+                                z-index: -10;
+                            }
                         }
 
                         &.active {
@@ -777,8 +850,16 @@ section {
                             padding-bottom: 10px;
                             opacity: 1;
 
+                            @media screen and (min-width: 1024px) {
+                                padding-bottom: unset;
+                            }
+
                             &::after {
                                 width: 48px;
+
+                                @media screen and (min-width: 1024px) {
+                                    width: 95px;
+                                }
                             }
                         }
 
