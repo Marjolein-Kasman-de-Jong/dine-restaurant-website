@@ -617,13 +617,49 @@ section {
 }
 
 .events {
+    position: relative;
+
+    &::before {
+        @media screen and (min-width: 768px) {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 50.78%;
+            width: 895px;
+            height: 320px;
+            background-image: url("/assets/images/patterns/pattern-curve-top-right.svg");
+            background-repeat: no-repeat;
+        }
+    }
+
     .section-content-wrapper {
         padding: 80px 0 95px 0;
 
+        @media screen and (min-width: 768px) {
+            padding: 120px 0 121px 0;
+        }
+
         .events-images-container {
+            position: relative;
             display: grid;
+            justify-content: center;
+
+            &::before {
+                @media screen and (min-width: 768px) {
+                    content: "";
+                    position: absolute;
+                    top: -38px;
+                    left: -58px;
+                    z-index: 10;
+                    width: 160px;
+                    height: 76px;
+                    background-image: url("/assets/images/patterns/pattern-lines.svg");
+                    background-repeat: no-repeat;
+                }
+            }
 
             .events-image {
+                width: fit-content;
                 grid-area: 1/1;
                 opacity: 0;
                 transition: opacity .8s ease-in-out;
@@ -641,6 +677,10 @@ section {
 
             .events-descriptions-container {
                 display: grid;
+                
+                @media screen and (min-width: 768px) {
+                    justify-items: center;
+                }
 
                 .event-panel {
                     grid-area: 1/1;
@@ -648,6 +688,10 @@ section {
                     transition: opacity .8s ease-in-out;
                     position: relative;
                     z-index: 0;
+
+                    @media screen and (min-width: 768px) {
+                        width: 79.62%;
+                    }
 
                     &.active {
                         opacity: 1;
@@ -658,11 +702,19 @@ section {
                         margin-bottom: 10px;
                         color: var(--colors-slate-800);
                         text-align: center;
+
+                        @media screen and (min-width: 768px) {
+                            margin-bottom: 20px;
+                        }
                     }
 
                     .event-panel-paragraph {
                         margin-bottom: 30px;
                         text-align: center;
+
+                        @media screen and (min-width: 768px) {
+                            margin-bottom: 56px;
+                        }
                     }
                 }
 
@@ -672,13 +724,26 @@ section {
             }
 
             .events-list {
+                margin: 0 -58px;
                 padding: 37px 0 28px 0;
                 list-style-type: none;
+
+                @media screen and (min-width: 768px) {
+                    padding: 57px 0 48px 0;
+                    display: flex;
+                    gap: 10px;
+                }
 
                 li {
                     min-height: 40px;
                     display: flex;
                     align-items: center;
+
+                    @media screen and (min-width: 768px) {
+                        width: 223px;
+                        min-height: 37px;
+                        align-items: flex-start;
+                    }
 
                     .btn-event {
                         width: 100%;
@@ -688,6 +753,12 @@ section {
                         opacity: .5;
                         padding-bottom: 0;
                         transition: padding-bottom .3s ease-in-out, opacity .3s ease-in-out;
+
+                        @media screen and (min-width: 768px) {
+                            height: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
 
                         &:after {
                             content: "";
