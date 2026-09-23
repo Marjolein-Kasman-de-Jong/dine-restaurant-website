@@ -157,6 +157,15 @@ body {
     line-height: 162.5%;
 }
 
+.paragraph-xsmall {
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 200%;
+    letter-spacing: 0.125rem;
+}
+
 .btn-book-a-table {
     font-size: 1.0625rem;
     font-style: normal;
@@ -190,7 +199,91 @@ main {
 /* Footer styles */
 
 .page-footer {
-    .section-content-wrapper {}
+    width: 100%;
+    min-height: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--colors-neutral-900);
+    color: var(--colors-neutral-0);
+
+    @media screen and (min-width: 768px) {
+        min-height: 328px;
+
+        @media screen and (min-width: 1024px) {
+            min-height: 240px;
+        }
+    }
+
+    .section-content-wrapper {
+        width: 87.2%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+
+        @media screen and (min-width: 768px) {
+            width: 89.71%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            @media screen and (min-width: 1024px) {
+                width: calc(100% - 40px);
+                max-width: 1110px;
+            }
+        }
+
+        .footer-info-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            text-align: center;
+
+            @media screen and (min-width: 768px) {
+                width: 66.18%;
+                align-items: flex-start;
+                text-align: left;
+
+                @media screen and (min-width: 1024px) {
+                    width: 73.33%;
+                    flex-direction: row;
+                    gap: unset;
+                    justify-content: space-between;
+                }
+            }
+
+            .contact {
+                @media screen and (min-width: 1024px) {
+                    width: 29.98%;
+                }
+
+                .phone {
+                    &:link,
+                    &:visited,
+                    &:hover,
+                    &:active {
+                        color: var(--colors-neutral-0);
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .opening-hours {
+                @media screen and (min-width: 1024px) {
+                    width: 54.79%;
+                }
+
+                p {
+                    &::first-line {
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
 }
 
 /* Section styles */
@@ -878,7 +971,7 @@ section {
     padding: 82px 0;
 
     background-image: image-set(url("../images/homepage/ready-bg-mobile.jpg") 1x,
-        url("../images/homepage/ready-bg-mobile@2x.jpg") 2x);
+            url("../images/homepage/ready-bg-mobile@2x.jpg") 2x);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -888,7 +981,7 @@ section {
         padding: 68px 0;
 
         background-image: image-set(url("../images/homepage/ready-bg-tablet.jpg") 1x,
-            url("../images/homepage/ready-bg-tablet@2x.jpg") 2x);
+                url("../images/homepage/ready-bg-tablet@2x.jpg") 2x);
 
         @media screen and (min-width: 1024px) {
             min-height: 240px;
@@ -897,7 +990,7 @@ section {
             align-items: center;
 
             background-image: image-set(url("../images/homepage/ready-bg-desktop.jpg") 1x,
-                url("../images/homepage/ready-bg-desktop@2x.jpg") 2x);
+                    url("../images/homepage/ready-bg-desktop@2x.jpg") 2x);
         }
     }
 
