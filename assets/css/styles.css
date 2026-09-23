@@ -92,7 +92,6 @@ body {
 }
 
 .heading-1 {
-    /* Hero heading */
     font-size: 2rem;
     font-style: normal;
     font-weight: 300;
@@ -114,7 +113,6 @@ body {
 }
 
 .heading-2 {
-    /* Usp item heading */
     font-feature-settings: 'liga' off, 'clig' off;
     font-size: 2rem;
     font-style: normal;
@@ -646,7 +644,7 @@ section {
                 padding: 160px 0;
                 display: flex;
                 justify-content: center;
-                gap: 120px; 
+                gap: 120px;
             }
         }
 
@@ -702,7 +700,7 @@ section {
 
             .events-descriptions-container {
                 display: grid;
-                
+
                 @media screen and (min-width: 768px) {
                     justify-items: center;
 
@@ -876,7 +874,59 @@ section {
 }
 
 .bookings-link {
-    .section-content-wrapper {}
+    min-height: 328px;
+    padding: 82px 0;
+
+    background-image: image-set(url("../images/homepage/ready-bg-mobile.jpg") 1x,
+        url("../images/homepage/ready-bg-mobile@2x.jpg") 2x);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media screen and (min-width: 768px) {
+        min-height: 272px;
+        padding: 68px 0;
+
+        background-image: image-set(url("../images/homepage/ready-bg-tablet.jpg") 1x,
+            url("../images/homepage/ready-bg-tablet@2x.jpg") 2x);
+
+        @media screen and (min-width: 1024px) {
+            min-height: 240px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+
+            background-image: image-set(url("../images/homepage/ready-bg-desktop.jpg") 1x,
+                url("../images/homepage/ready-bg-desktop@2x.jpg") 2x);
+        }
+    }
+
+    .section-content-wrapper {
+        width: calc(100% - 40px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media screen and (min-width: 1024px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .bookings-link-heading {
+            margin-bottom: 20px;
+            color: var(--colors-neutral-0);
+            text-align: center;
+
+            @media screen and (min-width: 768px) {
+                margin-bottom: 24px;
+
+                @media screen and (min-width: 1024px) {
+                    margin-bottom: unset;
+                    text-align: left;
+                }
+            }
+        }
+    }
 }
 
 .bookings {
