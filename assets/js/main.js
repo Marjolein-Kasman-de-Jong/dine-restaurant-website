@@ -42,4 +42,59 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
+
+    const form = document.querySelector("form");
+
+    // Check booking date and time validity
+    if (form) {
+        const monthInput = document.querySelector("#month");
+        const dayInput = document.querySelector("#day");
+        const yearInput = document.querySelector("#year");
+        const hoursInput = document.querySelector("#hours");
+        const minutesInput = document.querySelector("#minutes");
+        const periodInput = document.querySelector("#period");
+
+        const bookingFields = [monthInput, dayInput, yearInput, hoursInput, minutesInput, periodInput];
+
+        bookingFields.forEach((field) => {
+            const clearBookingError = () => {
+                yearInput.setCustomValidity("");
+            };
+
+            field.addEventListener("input", clearBookingError);
+            field.addEventListener("change", clearBookingError);
+        });
+
+        form.addEventListener("submit", (event) => {
+            yearInput.setCustomValidity("");
+
+            const month = Number(monthInput.value);
+            const day = Number(dayInput.value);
+            const year = Number(yearInput.value);
+            const hours = Number(hoursInput.value);
+            const minutes = Number(minutesInput.value);
+            const period = periodInput.value;
+
+            let hours24 = hours;
+
+            if (period === "PM" && hours !== 12) {
+                hours24 += 12;
+            }
+
+            if (period === "AM" && hours === 12) {
+                hours24 = 0;
+            }
+
+            const selectedDate = new Date(year, month - 1, day, hours24, minutes);
+            const now = new Date();
+
+            if (selectedDate <= now) {
+                event.preventDefault();
+
+                yearInput.setCustomValidity("Please choose a date and time in the future.");
+
+                yearInput.reportValidity();
+            }
+        });
+    }
 });

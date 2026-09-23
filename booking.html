@@ -4,18 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a table | Dine</title>
+    <title>Exquisite dining since 1989 | Dine</title>
 
     <meta name="description"
-        content="Reserve your table at Dine and enjoy exceptional food, locally sourced produce and an unforgettable dining experience.">
+        content="Experience exceptional dining in beautiful country surroundings. Enjoy locally sourced produce and a menu crafted for every occasion at Dine.">
 
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body class="page-booking">
     <main>
         <section id="anchor-id" class="bookings">
-            BOOKINGS
+            <div class="section-content-wrapper">
+                <img src="assets/images/logo.svg" alt="" class="logo">
+                <div class="bookings-content-wrapper">
+                    <div class="text-wrapper">
+                        <h1 class="bookings-heading">
+                            Reservations
+                        </h1>
+                        <p class="bookings-paragraph">
+                            We can't wait to host you. If you have any special requirements please feel free to call on
+                            the
+                            phone number below. We'll be happy to accommodate you.
+                        </p>
+                    </div>
+                    <form action="">
+                        <div class="form-field">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" autocomplete="email" required>
+                        </div>
+                        <fieldset class="booking-date">
+                            <legend>Pick a date</legend>
+                            <div class="form-field">
+                                <label for="month">Month</label>
+                                <input type="text" name="month" id="month" inputmode="numeric" maxlength="2"
+                                    pattern="0[1-9]|1[0-2]" placeholder="MM" title="Use a month between 01 and 12"
+                                    required>
+                            </div>
+                            <div class="form-field">
+                                <label for="day">Day</label>
+                                <input type="text" name="day" id="day" inputmode="numeric" maxlength="2"
+                                    pattern="0[1-9]|[12][0-9]|3[01]" placeholder="DD"
+                                    title="Use a day between 01 and 31" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="year">Year</label>
+                                <input type="text" name="year" id="year" inputmode="numeric" maxlength="4"
+                                    pattern="202[6-9]|20[3-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3}"
+                                    placeholder="YYYY" title="Use 2026 or a later year" required>
+                            </div>
+                        </fieldset>
+                        <fieldset class="booking-time">
+                            <legend>Pick a time</legend>
+                            <div class="form-field">
+                                <label for="hours">Hours</label>
+                                <input type="text" id="hours" name="hours" inputmode="numeric" maxlength="2"
+                                    pattern="0[1-9]|1[0-2]" placeholder="09" title="Use an hour between 01 and 12"
+                                    required>
+                            </div>
+                            <div class="form-field">
+                                <label for="minutes">Minutes</label>
+                                <input type="text" id="minutes" name="minutes" inputmode="numeric" maxlength="2"
+                                    pattern="[0-5][0-9]" placeholder="00" title="Use minutes between 00 and 59"
+                                    required>
+                            </div>
+                            <div class="form-field">
+                                <label for="period">AM or PM</label>
+                                <select id="period" name="period" required>
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <div class="form-field">
+                            <label for="amount">Amount of guests</label>
+                            <input type="number" name="amount" id="amount" value="1" min="1" required>
+                        </div>
+                        <button type="submit">
+                            Make reservation
+                        </button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="page-footer">
