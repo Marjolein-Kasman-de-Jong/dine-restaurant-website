@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const eventElementGroups = [eventImages, eventButtons, eventPanels];
 
+    const customSelect = document.querySelector('.custom-select');
+    const trigger = customSelect.querySelector('.custom-select-trigger');
+    const value = customSelect.querySelector('.custom-select-value');
+    const options = customSelect.querySelector('.custom-select-options');
+    const optionButtons = customSelect.querySelectorAll('.custom-select-option');
+    const input = customSelect.querySelector('input[type="hidden"]');
+
     // Animate titles
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -95,6 +102,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 yearInput.reportValidity();
             }
+        });
+    }
+
+    // Select AM/PM
+
+    trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        trigger.setAttribute('aria-expanded', !isOpen);
+        options.hidden = isOpen;
+    });
+
+    optionButtons.forEach(option => {
+        option.addEventListener('click', () => {
+            const selectedValue = option.dataset.value;
+
+            value.textContent = selectedValue;
+            input.value = selectedValue;
+
+            optionButtons.forEach(option => {
+                option.classList.remove('is-selected');
+            });
+
+            option.classList.add('is-selected');
+
+            trigger.setAttribute('aria-expanded', 'false');
+            options.hidden = true;
+
+            trigger.focus();
+        });
+    });
+
+    document.addEventListener('click', event => {
+        if (!customSelect.contains(event.target)) {
+            trigger.setAttribute('aria-expanded', 'false');
+            options.hidden = true;
+        }
+    });
+
+    // Increase/decrease amount of guests
+    const amountInput = document.querySelector("#amount");
+    const decreaseAmountButton = document.querySelector(".amount.decrease");
+    const increaseAmountButton = document.querySelector(".amount.increase");
+
+    if (amountInput && decreaseAmountButton && increaseAmountButton) {
+        const minAmount = Number(amountInput.min) || 1;
+
+        decreaseAmountButton.addEventListener("click", () => {
+            const currentAmount = Number(amountInput.value) || minAmount;
+
+            amountInput.value = Math.max(minAmount, currentAmount - 1);
+        });
+
+        increaseAmountButton.addEventListener("click", () => {
+            const currentAmount = Number(amountInput.value) || minAmount;
+
+            amountInput.value = currentAmount + 1;
         });
     }
 });

@@ -77,18 +77,41 @@
                                         pattern="[0-5][0-9]" placeholder="00" title="Use minutes between 00 and 59"
                                         required>
                                 </div>
-                                <div class="form-field">
+                                <div class="form-field custom-select">
                                     <label for="period" class="visibility-hidden">AM or PM</label>
-                                    <select id="period" name="period" required>
-                                        <option value="AM">AM</option>
-                                        <option value="PM">PM</option>
-                                    </select>
+                                    <input type="hidden" name="period" id="period" value="AM">
+
+                                    <button type="button" class="custom-select-trigger" aria-expanded="false">
+                                        <span class="custom-select-value">AM</span>
+                                    </button>
+
+                                    <ul class="custom-select-options" id="period-options" hidden>
+                                        <li>
+                                            <button class="custom-select-option is-selected" type="button"
+                                                data-value="AM">
+                                                <span class="custom-select-check" aria-hidden="true">
+                                                    <img src="assets/images/icons/icon-check.svg" alt="" class="checkmark">
+                                                </span>
+                                                AM
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="custom-select-option" type="button" data-value="PM">
+                                                <span class="custom-select-check" aria-hidden="true">
+                                                    <img src="assets/images/icons/icon-check.svg" alt="" class="checkmark">
+                                                </span>
+                                                PM
+                                            </button>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </fieldset>
-                        <div class="form-field">
+                        <div class="form-field amount-of-guests">
                             <label for="amount" class="visibility-hidden">Amount of guests</label>
-                            <input type="number" name="amount" id="amount" value="1" min="1" required>
+                            <button type="button" class="amount decrease"></button>
+                                <input type="number" name="amount" id="amount" value="1" min="1" required>
+                            <button type="button" class="amount increase"></button>
                         </div>
                         <button type="submit">
                             Make reservation

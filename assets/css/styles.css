@@ -185,7 +185,9 @@ body {
 }
 
 legend,
-input {
+input,
+.custom-select-trigger,
+.custom-select-option {
     font-feature-settings: 'liga' off, 'clig' off;
     font-size: 1.25rem;
     font-style: normal;
@@ -1083,6 +1085,32 @@ section {
                     }
                 }
 
+                .form-field.amount-of-guests {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .amount {
+                        width: 25px;
+                        height: 25px;
+                        border: none;
+                        background-color: var(--colors-neutral-0);
+                        background-repeat: no-repeat;
+                        background-position: center;
+
+                        &.decrease {
+                            background-image: url("../images/icons/icon-minus.svg");
+                        }
+
+                        &.increase {
+                            background-image: url("../images/icons/icon-plus.svg");
+                        }
+                    }
+
+                    input {
+                        text-align: center;
+                    }
+                }                        
+
                 fieldset {
                     border: none;
 
@@ -1104,18 +1132,64 @@ section {
                             input {
                                 height: 28px;
                             }
+                        }
 
-                            select {
+                        .form-field.custom-select {
+                            position: relative;
+
+                            .custom-select-trigger {
                                 display: block;
                                 width: 66px;
                                 height: 28px;
                                 margin: 0 auto;
                                 border: none;
                                 appearance: none;
+                                background-color: transparent;
                                 background-image: url("../images/icons/icon-arrow.svg");
                                 background-repeat: no-repeat;
                                 background-position: right top 8px;
-                                background-size: 16px 8px;
+                                background-size: 16px 10px;
+                                text-align: left;
+                            }
+
+                            .custom-select-options {
+                                position: absolute;
+                                top: 51px;
+                                left: 0;
+                                width: 106px;
+                                padding: 18px 16px 13px 16px;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 16px;
+                                list-style-type: none;
+                                background-color: var(--colors-neutral-0);
+                                box-shadow: 0 15px 25px 0 rgba(56, 66, 85, 0.25);
+
+                                &[hidden] {
+                                    display: none;
+                                }
+
+                                li {
+                                    .custom-select-option {
+                                        width: 100%;
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        align-items: center;
+                                        gap: 12px;
+                                        border: none;
+                                        background-color: var(--colors-neutral-0);
+
+                                        .custom-select-check {
+                                            opacity: 0;
+                                        }
+
+                                        &.is-selected {
+                                            .custom-select-check {
+                                                opacity: 1;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
