@@ -7,12 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const eventElementGroups = [eventImages, eventButtons, eventPanels];
 
+    const form = document.querySelector("form");
+
     const customSelect = document.querySelector('.custom-select');
-    const trigger = customSelect.querySelector('.custom-select-trigger');
-    const value = customSelect.querySelector('.custom-select-value');
-    const options = customSelect.querySelector('.custom-select-options');
-    const optionButtons = customSelect.querySelectorAll('.custom-select-option');
-    const input = customSelect.querySelector('input[type="hidden"]');
 
     // Animate titles
     const observer = new IntersectionObserver((entries) => {
@@ -50,8 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const form = document.querySelector("form");
-
     // Check booking date and time validity
     if (form) {
         const monthInput = document.querySelector("#month");
@@ -60,21 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const hoursInput = document.querySelector("#hours");
         const minutesInput = document.querySelector("#minutes");
         const periodInput = document.querySelector("#period");
+        const bookingDateError = document.querySelector(".booking-date > .error-message");
 
         const bookingFields = [monthInput, dayInput, yearInput, hoursInput, minutesInput, periodInput];
+        const requiredFields = form.querySelectorAll("[required]");
+        const defaultBookingDateError = bookingDateError ? bookingDateError.textContent : "";
 
-        bookingFields.forEach((field) => {
-            const clearBookingError = () => {
-                yearInput.setCustomValidity("");
-            };
-
-            field.addEventListener("input", clearBookingError);
-            field.addEventListener("change", clearBookingError);
-        });
-
-        form.addEventListener("submit", (event) => {
-            yearInput.setCustomValidity("");
-
+        const getBookingDate = () => {
             const month = Number(monthInput.value);
             const day = Number(dayInput.value);
             const year = Number(yearInput.value);
@@ -92,54 +79,129 @@ document.addEventListener("DOMContentLoaded", () => {
                 hours24 = 0;
             }
 
-            const selectedDate = new Date(year, month - 1, day, hours24, minutes);
-            const now = new Date();
+            return new Date(year, month - 1, day, hours24, minutes);
+        };
 
-            if (selectedDate <= now) {
+        const isRealBookingDate = (date) => {
+            return date.getFullYear() === Number(yearInput.value)
+                && date.getMonth() === Number(monthInput.value) - 1
+                && date.getDate() === Number(dayInput.value);
+        };
+
+        const setFieldError = (field, hasError) => {
+            const formField = field.closest(".form-field");
+
+            if (formField) {
+                formField.classList.toggle("error", hasError);
+            }
+        };
+
+        const clearBookingError = () => {
+            yearInput.setCustomValidity("");
+
+            if (bookingDateError) {
+                bookingDateError.textContent = defaultBookingDateError;
+            }
+        };
+
+        bookingFields.forEach((field) => {
+            field.addEventListener("input", clearBookingError);
+            field.addEventListener("change", clearBookingError);
+        });
+
+        requiredFields.forEach((field) => {
+            field.addEventListener("input", () => {
+                field.setCustomValidity("");
+                setFieldError(field, false);
+            });
+        });
+
+        form.addEventListener("submit", (event) => {
+            let isValid = true;
+
+            requiredFields.forEach((field) => {
+                field.setCustomValidity("");
+            });
+
+            if (bookingDateError) {
+                bookingDateError.textContent = defaultBookingDateError;
+            }
+
+            if (bookingFields.every((field) => field.value.trim() && field.checkValidity())) {
+                const selectedDate = getBookingDate();
+
+                if (!isRealBookingDate(selectedDate)) {
+                    yearInput.setCustomValidity("Please choose an existing date.");
+
+                    if (bookingDateError) {
+                        bookingDateError.textContent = "This date is invalid";
+                    }
+                } else if (selectedDate <= new Date()) {
+                    yearInput.setCustomValidity("Please choose a date and time in the future.");
+
+                    if (bookingDateError) {
+                        bookingDateError.textContent = "Choose a future date and time";
+                    }
+                }
+            }
+
+            requiredFields.forEach((field) => {
+                const hasError = !field.checkValidity();
+
+                setFieldError(field, hasError);
+                isValid = isValid && !hasError;
+            });
+
+            if (!isValid) {
                 event.preventDefault();
-
-                yearInput.setCustomValidity("Please choose a date and time in the future.");
-
-                yearInput.reportValidity();
             }
         });
     }
 
     // Select AM/PM
+    if (customSelect) {
+        const trigger = customSelect.querySelector('.custom-select-trigger');
+        const value = customSelect.querySelector('.custom-select-value');
+        const options = customSelect.querySelector('.custom-select-options');
+        const optionButtons = customSelect.querySelectorAll('.custom-select-option');
+        const input = customSelect.querySelector('input[type="hidden"]');
 
-    trigger.addEventListener('click', () => {
-        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.addEventListener('click', () => {
+            const isOpen = trigger.getAttribute('data-expanded') === 'true';
 
-        trigger.setAttribute('aria-expanded', !isOpen);
-        options.hidden = isOpen;
-    });
-
-    optionButtons.forEach(option => {
-        option.addEventListener('click', () => {
-            const selectedValue = option.dataset.value;
-
-            value.textContent = selectedValue;
-            input.value = selectedValue;
-
-            optionButtons.forEach(option => {
-                option.classList.remove('is-selected');
-            });
-
-            option.classList.add('is-selected');
-
-            trigger.setAttribute('aria-expanded', 'false');
-            options.hidden = true;
-
-            trigger.focus();
+            trigger.setAttribute('data-expanded', String(!isOpen));
+            options.hidden = isOpen;
         });
-    });
 
-    document.addEventListener('click', event => {
-        if (!customSelect.contains(event.target)) {
-            trigger.setAttribute('aria-expanded', 'false');
-            options.hidden = true;
-        }
-    });
+        optionButtons.forEach(option => {
+            option.addEventListener('click', () => {
+                const selectedValue = option.dataset.value;
+
+                value.textContent = selectedValue;
+                input.value = selectedValue;
+                input.dispatchEvent(new Event("input", { bubbles: true }));
+                input.dispatchEvent(new Event("change", { bubbles: true }));
+
+                optionButtons.forEach(option => {
+                    option.classList.remove('is-selected');
+                });
+
+                option.classList.add('is-selected');
+
+                trigger.setAttribute('data-expanded', 'false');
+                options.hidden = true;
+
+                trigger.focus();
+            });
+        });
+
+        document.addEventListener('click', event => {
+            if (!customSelect.contains(event.target)) {
+                trigger.setAttribute('data-expanded', 'false');
+                options.hidden = true;
+            }
+        });
+    }
 
     // Increase/decrease amount of guests
     const amountInput = document.querySelector("#amount");

@@ -29,18 +29,21 @@
                             phone number below. We'll be happy to accommodate you.
                         </p>
                     </div>
-                    <form action="" class="bookings-form">
+                    <form action="" class="bookings-form" novalidate>
                         <div class="form-field">
                             <label for="name" class="visibility-hidden">Name</label>
                             <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required>
+                            <p class="error-message">This field is required</p>
                         </div>
                         <div class="form-field">
                             <label for="email" class="visibility-hidden">Email</label>
                             <input type="email" name="email" id="email" placeholder="Email" autocomplete="email"
                                 required>
+                            <p class="error-message">This field is required</p>
                         </div>
                         <fieldset class="booking-date">
                             <legend>Pick a date</legend>
+                            <p class="error-message">This field is incomplete</p>
                             <div class="form-field-wrapper">
                                 <div class="form-field">
                                     <label for="month" class="visibility-hidden">Month</label>
@@ -64,6 +67,7 @@
                         </fieldset>
                         <fieldset class="booking-time">
                             <legend>Pick a time</legend>
+                            <p class="error-message">This field is incomplete</p>
                             <div class="form-field-wrapper">
                                 <div class="form-field">
                                     <label for="hours" class="visibility-hidden">Hours</label>
@@ -79,9 +83,9 @@
                                 </div>
                                 <div class="form-field custom-select">
                                     <label for="period" class="visibility-hidden">AM or PM</label>
-                                    <input type="hidden" name="period" id="period" value="AM">
+                                    <input type="hidden" name="period" id="period" value="AM" required>
 
-                                    <button type="button" class="custom-select-trigger" aria-expanded="false">
+                                    <button type="button" class="custom-select-trigger" data-expanded="false">
                                         <span class="custom-select-value">AM</span>
                                     </button>
 
@@ -89,7 +93,7 @@
                                         <li>
                                             <button class="custom-select-option is-selected" type="button"
                                                 data-value="AM">
-                                                <span class="custom-select-check" aria-hidden="true">
+                                                <span class="custom-select-check">
                                                     <img src="assets/images/icons/icon-check.svg" alt="" class="checkmark">
                                                 </span>
                                                 AM
@@ -97,7 +101,7 @@
                                         </li>
                                         <li>
                                             <button class="custom-select-option" type="button" data-value="PM">
-                                                <span class="custom-select-check" aria-hidden="true">
+                                                <span class="custom-select-check">
                                                     <img src="assets/images/icons/icon-check.svg" alt="" class="checkmark">
                                                 </span>
                                                 PM

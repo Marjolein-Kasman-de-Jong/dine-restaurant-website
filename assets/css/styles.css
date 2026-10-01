@@ -195,6 +195,15 @@ input,
     line-height: 150%;
 }
 
+.error-message {
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.0125rem;
+}
+
 /* Page styles */
 
 .page-home {}
@@ -1083,6 +1092,13 @@ section {
                             color: rgb(from var(--colors-neutral-900) r g b / 0.5);
                         }
                     }
+
+                    .error-message {
+                        display: none;
+                        position: relative;
+                        top: 24px;
+                        left: 16px;
+                    }
                 }
 
                 .form-field.amount-of-guests {
@@ -1109,13 +1125,44 @@ section {
                     input {
                         text-align: center;
                     }
-                }                        
+                }
+
+                .form-field.error {
+                    input {
+                        color: var(--colors-red-500);
+
+                        &::placeholder {
+                            color: rgb(from var(--colors-red-500) r g b / 0.5);
+                        }
+                    }
+
+                    .error-message {
+                        display: block;
+                        color: var(--colors-red-500);
+                    }
+                }
 
                 fieldset {
+                    position: relative;
                     border: none;
 
                     legend {
                         margin-bottom: 8px;
+                    }
+
+                    .error-message {
+                        display: none;
+                        position: absolute;
+                        top: -8px;
+                        left: 0;
+                        z-index: 1;
+                    }
+
+                    &:has(.form-field.error) {
+                        > .error-message {
+                            display: block;
+                            color: var(--colors-red-500);
+                        }
                     }
 
                     .form-field-wrapper {
@@ -1192,6 +1239,7 @@ section {
                                 }
                             }
                         }
+
                     }
                 }
             }
