@@ -1050,6 +1050,11 @@ section {
     background-position: top;
     background-repeat: no-repeat;
 
+    @media screen and (min-width: 768px) {
+        background-image: image-set(url("../images/booking/hero-bg-tablet.jpg") 1x,
+                url("../images/booking/hero-bg-tablet@2x.jpg") 2x);
+    }
+
     .section-content-wrapper {
         min-height: 1134px;
         padding: 65px 0 86px 0;
@@ -1058,11 +1063,28 @@ section {
         align-items: center;
         gap: 89px;
 
+        @media screen and (min-width: 768px) {
+            min-height: 1035px;
+            padding: 56px 0 120px 0;
+            gap: 70px;
+        }
+
+        .logo {
+            @media screen and (min-width: 768px) {
+                align-self: flex-start;
+                margin-left: -59px;
+            }
+        }
+
         .bookings-content-wrapper {
             .text-wrapper {
                 margin-bottom: 130px;
                 color: var(--colors-neutral-0);
                 text-align: center;
+
+                @media screen and (min-width: 768px) {
+                    margin-bottom: 38px;
+                }
 
                 .bookings-heading {
                     margin-bottom: 12px;
@@ -1077,9 +1099,18 @@ section {
                 background-color: var(--colors-neutral-0);
                 box-shadow: 0 75px 100px -50px rgba(56, 66, 85, 0.50);
 
+                @media screen and (min-width: 768px) {
+                    padding: 50px 48px;
+                    gap: unset;
+                }
+
                 .form-field {
                     min-height: 43px;
                     border-bottom: 1px solid var(--colors-neutral-400);
+
+                    @media screen and (min-width: 768px) {
+                        margin-bottom: 34px;
+                    }
 
                     input {
                         width: 100%;
@@ -1146,20 +1177,36 @@ section {
                     position: relative;
                     border: none;
 
+                    @media screen and (min-width: 768px) {
+                        padding-left: 23.75%;
+                    }
+
                     legend {
                         margin-bottom: 8px;
+
+                        @media screen and (min-width: 768px) {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 23.75%;
+                            margin-bottom: 0;
+                        }
                     }
 
                     .error-message {
                         display: none;
                         position: absolute;
-                        top: -8px;
+                        top: -10px;
                         left: 0;
                         z-index: 1;
+
+                        @media screen and (min-width: 768px) {
+                            top: 30px;
+                        }
                     }
 
                     &:has(.form-field.error) {
-                        > .error-message {
+                        >.error-message {
                             display: block;
                             color: var(--colors-red-500);
                         }
@@ -1168,6 +1215,11 @@ section {
                     .form-field-wrapper {
                         display: flex;
                         justify-content: space-between;
+
+                        @media screen and (min-width: 768px) {
+                            justify-content: flex-end;
+                            gap: 16px;
+                        }
 
                         .form-field {
                             width: 75px;
@@ -1251,19 +1303,19 @@ section {
 
 /* -- Button styles */
 
-.btn-book-a-table {
-    width: 248px;
+.btn-book-a-table,
+.btn-submit {
     height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: color .3s ease-in, background-color .3s ease-in;
+    text-transform: uppercase;
 
     &:link,
     &:visited,
     &:hover,
     &:active {
-        text-transform: uppercase;
         text-decoration: none;
     }
 
@@ -1295,4 +1347,12 @@ section {
             }
         }
     }
+}
+
+.btn-book-a-table {
+    width: 248px;
+}
+
+.btn-submit {
+    width: 100%;
 }
