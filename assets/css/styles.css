@@ -44,6 +44,14 @@ video {
     max-width: 100%;
 }
 
+button {
+    @media(hover: hover) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 /* Colors */
 
 :root {
@@ -1058,6 +1066,7 @@ section {
         @media screen and (min-width: 1024px) {
             background-image: image-set(url("../images/booking/hero-bg-desktop.jpg") 1x,
                     url("../images/booking/hero-bg-desktop@2x.jpg") 2x);
+            background-size: 100% 600px;
         }
     }
 
@@ -1137,6 +1146,7 @@ section {
             }
 
             .bookings-form {
+                position: relative;
                 padding: 36px 32px;
                 display: flex;
                 flex-direction: column;
@@ -1150,6 +1160,20 @@ section {
 
                     @media screen and (min-width: 1024px) {
                         width: 48.65%;
+                    }
+                }
+
+                &::after {
+                    @media screen and (min-width: 1024px) {
+                        content: "";
+                        position: absolute;
+                        bottom: -38px;
+                        left: -80px;
+                        z-index: -1;
+                        width: 160px;
+                        height: 76px;
+                        background-image: url("/assets/images/patterns/pattern-lines.svg");
+                        background-repeat: no-repeat;
                     }
                 }
 
@@ -1167,6 +1191,16 @@ section {
                         padding: 0 16px;
                         border: none;
                         color: var(--colors-neutral-900);
+
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-outer-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        &::placeholder {
+                            color: rgb(from var(--colors-neutral-900) r g b / 0.5);
+                        }
 
                         &::placeholder {
                             color: rgb(from var(--colors-neutral-900) r g b / 0.5);
@@ -1255,6 +1289,7 @@ section {
                     }
 
                     &:has(.form-field.error) {
+
                         legend,
                         >.error-message {
                             display: block;
@@ -1341,7 +1376,6 @@ section {
                                 }
                             }
                         }
-
                     }
                 }
             }
