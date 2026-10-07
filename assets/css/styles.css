@@ -1259,8 +1259,10 @@ section {
                 fieldset {
                     position: relative;
                     border: none;
+                    max-width: 320px;
 
                     @media screen and (min-width: 768px) {
+                        max-width: 444px;
                         padding-left: 23.75%;
                     }
 
