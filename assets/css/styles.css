@@ -1,6 +1,6 @@
 @font-face {
     font-family: "League Spartan";
-    src: url("/assets/fonts/LeagueSpartan-VariableFont_wght.ttf") format("truetype");
+    src: url("../fonts/LeagueSpartan-VariableFont_wght.ttf") format("truetype");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -442,7 +442,7 @@ section {
             right: 50.78%;
             width: 895px;
             height: 320px;
-            background-image: url("/assets/images/patterns/pattern-curve-top-right.svg");
+            background-image: url("../images/patterns/pattern-curve-top-right.svg");
             background-repeat: no-repeat;
 
             @media screen and (min-width: 1024px) {
@@ -461,7 +461,7 @@ section {
             left: 50%;
             width: 895px;
             height: 320px;
-            background-image: url("/assets/images/patterns/pattern-curve-top-left.svg");
+            background-image: url("../images/patterns/pattern-curve-top-left.svg");
             background-repeat: no-repeat;
 
             @media screen and (min-width: 1024px) {
@@ -529,7 +529,7 @@ section {
                             right: -58px;
                             width: 160px;
                             height: 76px;
-                            background-image: url("/assets/images/patterns/pattern-lines.svg");
+                            background-image: url("../images/patterns/pattern-lines.svg");
                             background-repeat: no-repeat;
 
                             @media screen and (min-width: 1024px) {
@@ -747,7 +747,7 @@ section {
             right: 50.78%;
             width: 895px;
             height: 320px;
-            background-image: url("/assets/images/patterns/pattern-curve-top-right.svg");
+            background-image: url("../images/patterns/pattern-curve-top-right.svg");
             background-repeat: no-repeat;
 
             @media screen and (min-width: 1024px) {
@@ -788,7 +788,7 @@ section {
                     z-index: 10;
                     width: 160px;
                     height: 76px;
-                    background-image: url("/assets/images/patterns/pattern-lines.svg");
+                    background-image: url("../images/patterns/pattern-lines.svg");
                     background-repeat: no-repeat;
 
                     @media screen and (min-width: 1024px) {
@@ -1079,7 +1079,7 @@ section {
             z-index: -1;
             width: 993px;
             height: 330px;
-            background-image: url("/assets/images/patterns/pattern-curve-bottom-right.svg");
+            background-image: url("../images/patterns/pattern-curve-bottom-right.svg");
             background-size: 100% 100%;
             background-repeat: no-repeat;
         }
@@ -1172,7 +1172,7 @@ section {
                         z-index: -1;
                         width: 160px;
                         height: 76px;
-                        background-image: url("/assets/images/patterns/pattern-lines.svg");
+                        background-image: url("../images/patterns/pattern-lines.svg");
                         background-repeat: no-repeat;
                     }
                 }
