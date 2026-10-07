@@ -1044,6 +1044,7 @@ section {
 }
 
 .bookings {
+    position: relative;
     background-image: image-set(url("../images/booking/hero-bg-mobile.jpg") 1x,
             url("../images/booking/hero-bg-mobile@2x.jpg") 2x);
     background-size: contain;
@@ -1053,6 +1054,26 @@ section {
     @media screen and (min-width: 768px) {
         background-image: image-set(url("../images/booking/hero-bg-tablet.jpg") 1x,
                 url("../images/booking/hero-bg-tablet@2x.jpg") 2x);
+
+        @media screen and (min-width: 1024px) {
+            background-image: image-set(url("../images/booking/hero-bg-desktop.jpg") 1x,
+                    url("../images/booking/hero-bg-desktop@2x.jpg") 2x);
+        }
+    }
+
+    &::after {
+        @media screen and (min-width: 1024px) {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            width: 993px;
+            height: 330px;
+            background-image: url("/assets/images/patterns/pattern-curve-bottom-right.svg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
     }
 
     .section-content-wrapper {
@@ -1067,16 +1088,31 @@ section {
             min-height: 1035px;
             padding: 56px 0 120px 0;
             gap: 70px;
+
+            @media screen and (min-width: 1024px) {
+                min-height: 918px;
+                padding: 65px 0 116px 0;
+                gap: 153px;
+            }
         }
 
         .logo {
             @media screen and (min-width: 768px) {
                 align-self: flex-start;
                 margin-left: -59px;
+
+                @media screen and (min-width: 1024px) {
+                    margin-left: unset;
+                }
             }
         }
 
         .bookings-content-wrapper {
+            @media screen and (min-width: 1024px) {
+                display: flex;
+                justify-content: space-between;
+            }
+
             .text-wrapper {
                 margin-bottom: 130px;
                 color: var(--colors-neutral-0);
@@ -1084,10 +1120,19 @@ section {
 
                 @media screen and (min-width: 768px) {
                     margin-bottom: 38px;
+
+                    @media screen and (min-width: 1024px) {
+                        width: 40.09%;
+                        text-align: left;
+                    }
                 }
 
                 .bookings-heading {
                     margin-bottom: 12px;
+
+                    @media screen and (min-width: 1024px) {
+                        margin-bottom: 20px;
+                    }
                 }
             }
 
@@ -1102,6 +1147,10 @@ section {
                 @media screen and (min-width: 768px) {
                     padding: 50px 48px;
                     gap: unset;
+
+                    @media screen and (min-width: 1024px) {
+                        width: 48.65%;
+                    }
                 }
 
                 .form-field {
@@ -1206,6 +1255,7 @@ section {
                     }
 
                     &:has(.form-field.error) {
+                        legend,
                         >.error-message {
                             display: block;
                             color: var(--colors-red-500);
